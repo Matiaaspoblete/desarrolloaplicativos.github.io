@@ -1,32 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const url = 'https://610f5d459b698d0017175310.mockapi.io/api/v1/Personas';
-        getPersonas();
+    const url = 'https://6147d78565467e0017384c11.mockapi.io/Productospetshop';
+        getProducts();
 
-    document.querySelector("#crearPersona").addEventListener("click", () => {
-        let ID = document.querySelector("#id").value;
-        let nombre = document.querySelector("#nombre").value;
-        let apellido = document.querySelector("#apellido").value;
-        let direccion = document.querySelector("#direccion").value;
-        let titulo = document.querySelector("#titulo").value;
-        let edad = document.querySelector("#edad").value;
-        let avatar = document.querySelector("#avatar").value;
-        console.log(document.querySelector("#apellido"));
-        crearPersona(nombre,apellido,direccion,titulo,avatar,edad);
+    document.querySelector("#crearProducts").addEventListener("click", () => {
+        
+        let Nombre = document.querySelector("#Nombre").value;
+        let Precio = document.querySelector("#Precio").value;
+        let Calidad = document.querySelector("#Calidad").value;
+        let Descripcion = document.querySelector("#Descripcion").value;
+        let Marca = document.querySelector("#Marca").value;
+        let Imagen = document.querySelector("#Imagen").value;
+        let id = document.querySelector("#id").value;
+        crearProducts(Nombre,Precio,Calidad,Descripcion,Marca,Imagen,id);
     })
     
-    document.querySelector("#editPersonas").addEventListener("click", () => {
+    document.querySelector("#editProducts").addEventListener("click", () => {
+
+        let Nombre = document.querySelector("#Nombre").value;
+        let Precio = document.querySelector("#Precio").value;
+        let Calidad = document.querySelector("#Calidad").value;
+        let Descripcion = document.querySelector("#Descripcion").value;
+        let Marca = document.querySelector("#Marca").value;
+        let Imagen = document.querySelector("#Imagen").value;
         let id = document.querySelector("#id").value;
-        let nombre = document.querySelector("#nombreedit").value;
-        let apellido = document.querySelector("#apellidoedit").value;
-        let direccion = document.querySelector("#direccionedit").value;
-        let titulo = document.querySelector("#tituloedit").value;
-        let edad = document.querySelector("#edadedit").value;
-        let avatar = document.querySelector("#avataredit").value;
-        console.log(document.querySelector("#apellidoedit"));
-        editarPersonas(id,nombre,apellido,direccion,titulo,avatar,edad);  
+        editProducts(Nombre,Precio,Calidad,Descripcion,Marca,Imagen,id);
 
     })
-async function crearPersona(nombre, apellido, direccion, titulo, avatar, edad) {
+async function crearProducts(Nombre,Precio,Calidad,Descripcion,Marca,Imagen,id) {
     await fetch(url, {
         method: "POST",
         headers: {
@@ -34,16 +34,17 @@ async function crearPersona(nombre, apellido, direccion, titulo, avatar, edad) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "nombre": nombre,
-            "apellido": apellido,
-            "direccion": direccion,
-            "titulo": titulo,
-            "avatar": avatar,
-            "edad": edad
+            "Nombre": Nombre,
+            "Precio": Precio,
+            "Calidad": Calidad,
+            "Descripcion": Descripcion,
+            "Marca": Marca,
+            "Imagen": Imagen,
+            "id": id
         })
     }).then(response => {
         if (response.ok) {
-            getPersonas();
+            getProducts();
             console.log(response)
         } else {
             console.log("Si no funcione entro aca")
@@ -54,7 +55,7 @@ async function crearPersona(nombre, apellido, direccion, titulo, avatar, edad) {
     })
 }
 
-async function editarPersonas(id,nombre, apellido, direccion, titulo, avatar, edad) {
+async function editProducts(Nombre,Precio,Calidad,Descripcion,Marca,Imagen,id) {
     await fetch(url + "/" + id, {
         method: "PUT",
         headers: {
@@ -62,16 +63,17 @@ async function editarPersonas(id,nombre, apellido, direccion, titulo, avatar, ed
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "nombre": nombre,
-            "apellido": apellido,
-            "direccion": direccion,
-            "titulo": titulo,
-            "avatar": avatar,
-            "edad": edad
+            "Nombre": Nombre,
+            "Precio": Precio,
+            "Calidad": Calidad,
+            "Descripcion": Descripcion,
+            "Marca": Marca,
+            "Imagen": Imagen,
+            "id": id
         })
     }).then(response => {
         if (response.ok) {
-            getPersonas();
+            getProducts();
             console.log(response)
         } else {
             console.log("Si no funcione entro aca")
@@ -82,7 +84,7 @@ async function editarPersonas(id,nombre, apellido, direccion, titulo, avatar, ed
     })
 }
 
-async function getPersonas() {
+async function getProducts() {
     await fetch(url)
         .then(response => {
         response.json().then(resp => {
@@ -94,40 +96,44 @@ async function getPersonas() {
             resp.map(persona => {
                 console.log(persona);
                 let table = document.createElement("tr");
-                let nombreColumna = document.createElement("td");
-                let nombre = document.createTextNode(persona.nombre);
-                nombreColumna.append(nombre);
-                table.append(nombreColumna);
+                let NombreColumna = document.createElement("td");
+                let Nombre = document.createTextNode(persona.Nombre);
+                NombreColumna.append(Nombre);
+                table.append(NombreColumna);
 
-                let ID = document.createElement("td");
-                ID.append(document.createTextNode(persona.id))
-                table.append(ID)
+                let Precio = document.createElement("td");
+                Precio.append(document.createTextNode(persona.Precio))
+                table.append(Precio)
 
-                let apellido = document.createElement("td");
-                apellido.append(document.createTextNode(persona.apellido))
-                table.append(apellido)
+                let Calidad = document.createElement("td");
+                Calidad.append(document.createTextNode(persona.Calidad))
+                table.append(Calidad)
 
-                let direccion = document.createElement("td")
-                direccion.append(document.createTextNode(persona.direccion));
-                table.append(direccion)
+                let Descripcion = document.createElement("td")
+                Descripcion.append(document.createTextNode(persona.Descripcion));
+                table.append(Descripcion)
 
-                let titulo = document.createElement("td")
-                titulo.append(document.createTextNode(persona.titulo));
-                table.append(titulo)
+                let Marca = document.createElement("td")
+                Marca.append(document.createTextNode(persona.Marca));
+                table.append(Marca)
 
-                let edad = document.createElement("td")
-                edad.append(document.createTextNode(persona.edad));
-                table.append(edad)
-
-                let avatar = document.createElement("td")
-                avatar.append(document.createTextNode(persona.avatar));
+                let Imagen = document.createElement("td")
+                Imagen.append(document.createTextNode(persona.Imagen));
                 let img = document.createElement("img");
-                img.src = persona.avatar;
+                img.src = persona.Imagen;
+                img.style.width = "200px";
                 table.append(img)
+
+                let id = document.createElement("td");
+                id.append(document.createTextNode(persona.id))
+                table.append(id)
 
                 let eliminar = document.createElement("button");
                 eliminar.setAttribute("value",persona.id);
                 eliminar.append(document.createTextNode("Eliminar"));
+                eliminar.style.color = "#fff";
+                eliminar.style.background = "#f44336";
+                eliminar.style.border = "none";
                 table.append(eliminar);
                 eliminar.addEventListener("click", ()=> {
                     eliminarPersona(eliminar.getAttribute("value"));
@@ -143,11 +149,18 @@ async function eliminarPersona(id) {
         method: "DELETE"
     }).then( (response)=> {
         if (response.ok) {
-            getPersonas();
+            getProducts();
         }
     })
 
 }
+
+const myModal = document.getElementById('myModal')
+const myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.mdb.modal', () => {
+myInput.focus()
+})
 
 })
 
