@@ -6,27 +6,23 @@ document.addEventListener("DOMContentLoaded", () => {
         
         let Nombre = document.querySelector("#Nombre").value;
         let Precio = document.querySelector("#Precio").value;
-        let Calidad = document.querySelector("#Calidad").value;
         let Descripcion = document.querySelector("#Descripcion").value;
-        let Marca = document.querySelector("#Marca").value;
         let Imagen = document.querySelector("#Imagen").value;
         let id = document.querySelector("#id").value;
-        crearProducts(Nombre,Precio,Calidad,Descripcion,Marca,Imagen,id);
+        crearProducts(Nombre,Precio,Descripcion,Imagen,id);
     })
     
     document.querySelector("#editProducts").addEventListener("click", () => {
 
         let Nombre = document.querySelector("#Nombre").value;
         let Precio = document.querySelector("#Precio").value;
-        let Calidad = document.querySelector("#Calidad").value;
         let Descripcion = document.querySelector("#Descripcion").value;
-        let Marca = document.querySelector("#Marca").value;
         let Imagen = document.querySelector("#Imagen").value;
         let id = document.querySelector("#id").value;
-        editProducts(Nombre,Precio,Calidad,Descripcion,Marca,Imagen,id);
+        editProducts(Nombre,Precio,Descripcion,Imagen,id);
 
     })
-async function crearProducts(Nombre,Precio,Calidad,Descripcion,Marca,Imagen,id) {
+async function crearProducts(Nombre,Precio,Descripcion,Imagen,id) {
     await fetch(url, {
         method: "POST",
         headers: {
@@ -36,9 +32,7 @@ async function crearProducts(Nombre,Precio,Calidad,Descripcion,Marca,Imagen,id) 
         body: JSON.stringify({
             "Nombre": Nombre,
             "Precio": Precio,
-            "Calidad": Calidad,
             "Descripcion": Descripcion,
-            "Marca": Marca,
             "Imagen": Imagen,
             "id": id
         })
@@ -55,7 +49,7 @@ async function crearProducts(Nombre,Precio,Calidad,Descripcion,Marca,Imagen,id) 
     })
 }
 
-async function editProducts(Nombre,Precio,Calidad,Descripcion,Marca,Imagen,id) {
+async function editProducts(Nombre,Precio,Descripcion,Imagen,id) {
     await fetch(url + "/" + id, {
         method: "PUT",
         headers: {
@@ -65,9 +59,7 @@ async function editProducts(Nombre,Precio,Calidad,Descripcion,Marca,Imagen,id) {
         body: JSON.stringify({
             "Nombre": Nombre,
             "Precio": Precio,
-            "Calidad": Calidad,
             "Descripcion": Descripcion,
-            "Marca": Marca,
             "Imagen": Imagen,
             "id": id
         })
@@ -105,17 +97,9 @@ async function getProducts() {
                 Precio.append(document.createTextNode(persona.Precio))
                 table.append(Precio)
 
-                let Calidad = document.createElement("td");
-                Calidad.append(document.createTextNode(persona.Calidad))
-                table.append(Calidad)
-
                 let Descripcion = document.createElement("td")
                 Descripcion.append(document.createTextNode(persona.Descripcion));
                 table.append(Descripcion)
-
-                let Marca = document.createElement("td")
-                Marca.append(document.createTextNode(persona.Marca));
-                table.append(Marca)
 
                 let Imagen = document.createElement("td")
                 Imagen.append(document.createTextNode(persona.Imagen));
