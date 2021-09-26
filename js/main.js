@@ -90,7 +90,7 @@ async function getProducts() {
                 let table = document.createElement("tr");
                 let NombreColumna = document.createElement("td");
                 let nombre = document.createTextNode(persona.nombre);
-                NombreColumna.append(Nombre);
+                NombreColumna.append(nombre);
                 table.append(NombreColumna);
 
                 let precio = document.createElement("td");
