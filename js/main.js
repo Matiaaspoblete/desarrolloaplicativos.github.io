@@ -4,22 +4,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector("#crearProducts").addEventListener("click", () => {
         
-        let Nombre = document.querySelector("#Nombre").value;
-        let Precio = document.querySelector("#Precio").value;
-        let Descripcion = document.querySelector("#Descripcion").value;
-        let Imagen = document.querySelector("#Imagen").value;
+        let nombre = document.querySelector("#nombre").value;
+        let precio = document.querySelector("#precio").value;
+        let descripcion = document.querySelector("#descripcion").value;
+        let imagen = document.querySelector("#imagen").value;
         let id = document.querySelector("#id").value;
-        crearProducts(Nombre,Precio,Descripcion,Imagen,id);
+        crearProducts(nombre,precio,descripcion,imagen,id);
     })
     
     document.querySelector("#editProducts").addEventListener("click", () => {
 
-        let Nombre = document.querySelector("#Nombre").value;
-        let Precio = document.querySelector("#Precio").value;
-        let Descripcion = document.querySelector("#Descripcion").value;
-        let Imagen = document.querySelector("#Imagen").value;
+        let nombre = document.querySelector("#nombre").value;
+        let precio = document.querySelector("#precio").value;
+        let descripcion = document.querySelector("#descripcion").value;
+        let imagen = document.querySelector("#imagen").value;
         let id = document.querySelector("#id").value;
-        editProducts(Nombre,Precio,Descripcion,Imagen,id);
+        editProducts(nombre,precio,descripcion,imagen,id);
 
     })
 async function crearProducts(Nombre,Precio,Descripcion,Imagen,id) {
@@ -30,10 +30,10 @@ async function crearProducts(Nombre,Precio,Descripcion,Imagen,id) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "Nombre": Nombre,
-            "Precio": Precio,
-            "Descripcion": Descripcion,
-            "Imagen": Imagen,
+            "nombre": nombre,
+            "precio": precio,
+            "descripcion": descripcion,
+            "imagen": imagen,
             "id": id
         })
     }).then(response => {
@@ -57,10 +57,10 @@ async function editProducts(Nombre,Precio,Descripcion,Imagen,id) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "Nombre": Nombre,
-            "Precio": Precio,
-            "Descripcion": Descripcion,
-            "Imagen": Imagen,
+            "nombre": nombre,
+            "precio": precio,
+            "descripcion": descripcion,
+            "imagen": imagen,
             "id": id
         })
     }).then(response => {
@@ -89,22 +89,22 @@ async function getProducts() {
                 console.log(persona);
                 let table = document.createElement("tr");
                 let NombreColumna = document.createElement("td");
-                let Nombre = document.createTextNode(persona.Nombre);
+                let nombre = document.createTextNode(persona.nombre);
                 NombreColumna.append(Nombre);
                 table.append(NombreColumna);
 
-                let Precio = document.createElement("td");
-                Precio.append(document.createTextNode(persona.Precio))
-                table.append(Precio)
+                let precio = document.createElement("td");
+                precio.append(document.createTextNode(persona.precio))
+                table.append(precio)
 
-                let Descripcion = document.createElement("td")
-                Descripcion.append(document.createTextNode(persona.Descripcion));
-                table.append(Descripcion)
+                let descripcion = document.createElement("td")
+                descripcion.append(document.createTextNode(persona.descripcion));
+                table.append(descripcion)
 
-                let Imagen = document.createElement("td")
-                Imagen.append(document.createTextNode(persona.Imagen));
+                let imagen = document.createElement("td")
+                imagen.append(document.createTextNode(persona.imagen));
                 let img = document.createElement("img");
-                img.src = persona.Imagen;
+                img.src = persona.imagen;
                 img.style.width = "200px";
                 table.append(img)
 
