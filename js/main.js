@@ -88,10 +88,10 @@ async function getProducts() {
             resp.map(persona => {
                 console.log(persona);
                 let table = document.createElement("tr");
-                let nombreColumna = document.createElement("td");
+                let NombreColumna = document.createElement("td");
                 let nombre = document.createTextNode(persona.nombre);
-                nombreColumna.append(Nombre);
-                table.append(nombreColumna);
+                NombreColumna.append(Nombre);
+                table.append(NombreColumna);
 
                 let precio = document.createElement("td");
                 precio.append(document.createTextNode(persona.precio))
