@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         editProducts(nombre,precio,descripcion,imagen,id);
 
     })
-async function crearProducts(Nombre,Precio,Descripcion,Imagen,id) {
+async function crearProducts(nombre,precio,descripcion,imagen,id) {
     await fetch(url, {
         method: "POST",
         headers: {
@@ -49,7 +49,7 @@ async function crearProducts(Nombre,Precio,Descripcion,Imagen,id) {
     })
 }
 
-async function editProducts(Nombre,Precio,Descripcion,Imagen,id) {
+async function editProducts(nombre,precio,descripcion,imagen,id) {
     await fetch(url + "/" + id, {
         method: "PUT",
         headers: {
@@ -88,10 +88,10 @@ async function getProducts() {
             resp.map(persona => {
                 console.log(persona);
                 let table = document.createElement("tr");
-                let NombreColumna = document.createElement("td");
+                let nombreColumna = document.createElement("td");
                 let nombre = document.createTextNode(persona.nombre);
-                NombreColumna.append(Nombre);
-                table.append(NombreColumna);
+                nombreColumna.append(nombre);
+                table.append(nombreColumna);
 
                 let precio = document.createElement("td");
                 precio.append(document.createTextNode(persona.precio))
